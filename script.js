@@ -6,35 +6,38 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado: "Qual sua opinião sobre o chat gpt?",
+        enunciado: "Qual sua opnião sobre música clássica ?",
             alternativas: [
 
-            texto: "Isso é assustador!",
+            texto: "Chato",
             afirmação: "afirmação"  
                 
-            texto: "Isso é assustador!",
+            texto: "Legal",
             afirmação: "afirmação"      
         ]
     },
     {
-        enunciado: "Com a descoberta desta tecnologia (IA), o professor decidiu fazer uma sequência de aulas sobre esta ela. No fim de uma aule ela pede que você escreva um trabalho sobre o uso de IA em sala de aula. Qual atitude você toma?",
+        enunciado: "Você pratica aulas de algum instrumento ?",
         alternativas: [
-            "Utiliza uma ferramenta de busca na internet que utiliza IA para que ela ajude a encontrar informações relevantes para o trabalho e explique numa linguagem que facilite o entendimento.",
-            "Escreve o trabalho com base nas conversas que teve com colegas, algumas pesquisas na internet e conhecimentos próprios sobre o tema.",
+            "Sim, bastante",
+            "Não muitp",
+            "Não",
         ]
     },
     {
-        enunciado: "Após a elaboração do trabalho, o professor realizou um debate entre a turma para entender como foi realizada a pesquisa e escrita. Nessa conversa também foi levantado um ponto muito importante: como a IA impacta o trabalho do futuro. Nesse debate, como você se posiciona?",
+        enunciado: "Você acha importante que haja mais aulas de músicas para as pessoas ?",
         alternativas: [
-            "Defende a ideia de que a IA pode criar novas oportunidades de emprego e melhorar habilidades humanas.",
-            "Me preocupo com as pessoas que perderão seus empregos para máquinas e defendem a importância de proteger os trabalhadores."
+            "Sim",
+            "Não"
         ]
     },
     {
-        enunciado: "Ao final da discussão, você precisou criar uma imagem no computador que representasse o que pensa sobre IA. E agora?",
+        enunciado: "Se você conseguisse tocar um instrumento, qual família seria ?",
         alternativas: [
-            "Criar uma imagem utilizando uma plataforma de design como o Paint.",
-            "Criar uma imagem utilizando um gerador de imagem de IA."
+            "Cordas",
+            "Madeira",
+            "Metais",
+            "Percursão",
         ]
     },
     {
@@ -53,8 +56,14 @@ let historiaFinal = "";
 
 
 function mostraPergunta() {
+    if(atual >= perguntas.lenght){
+        mostraResultado();
+        return;
+    }
+    
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
     mostraAlternativas();
 }
 
@@ -82,11 +91,13 @@ function mostraAlternativas() {
 
 function respostaSelecionada(opcaoSelecionada){
     const afirmacoes = opcaoSelecionada.afirmacoes;
-    historiaFinal = afirmacoes;
+    historiaFinal += afirmacoes + "";
     atual++;
     mostraPergunta();
 }
 
+function mostraResultado(){
+    caixaPerguntas.textContent = "";
+}
 
-mostraPergunta();
 mostraPergunta();
