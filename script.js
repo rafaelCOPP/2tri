@@ -8,46 +8,81 @@ const perguntas = [
     {
         enunciado: "Qual sua opnião sobre música clássica ?",
             alternativas: [
-
-            texto: "Chato",
-            afirmação: "afirmação"  
-                
+                {
             texto: "Legal",
+            afirmação: "afirmação"  
+                },
+                {
+            texto: "Chato",
             afirmação: "afirmação"      
-        ]
-    },
+                }
+    ],
     {
         enunciado: "Você pratica aulas de algum instrumento ?",
         alternativas: [
+            {
             "Sim, bastante",
+            },
+            {
             "Não muitp",
+            },
+            {
             "Não",
-        ]
-    },
+            }
+        ],
     {
-        enunciado: "Você acha importante que haja mais aulas de músicas para as pessoas ?",
+        enunciado: "Você acha importante que haja mais a apresentação da musica para as crianças ?",
         alternativas: [
+            {
             "Sim",
+            },
+            {
             "Não"
+            }
         ]
     },
     {
         enunciado: "Se você conseguisse tocar um instrumento, qual família seria ?",
         alternativas: [
+            {
             "Cordas",
+            },
+            {
             "Madeira",
+            },
+            {
             "Metais",
+            },
+            {
             "Percursão",
+            }
         ]
     },
     {
-        enunciado: "Você tem um trabalho em grupo de biologia para entregar na semana seguinte, o andamento do trabalho está um pouco atrasado e uma pessoa do seu grupo decidiu fazer com ajuda de uma IA. O problema é que o trabalho está totalmente igual ao do chat. O que você faz?",
+        enunciado: "Você acha que as IAs podem substituir músicos ?",
         alternativas: [
-           "Escrever comandos para o chat é uma forma de contribuir com o trabalho, por isso não é um problema utilizar o texto inteiro.",
-            "O chat pode ser uma tecnologia muito avançada, mas é preciso manter a atenção pois toda máquina erra, por isso revisar o trabalho e contribuir com as perspectivas pessoais é essencial."
+            {
+            "Sim",
+            },
+            {
+            "Não"
+            },
         ]
     },
 ];
+
+
+/*
+let atual = 0;
+let perguntaAtual;
+
+
+function mostraPergunta() {
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    mostraAlternativas();
+}
+*/
 
 
 let atual = 0;
@@ -56,7 +91,7 @@ let historiaFinal = "";
 
 
 function mostraPergunta() {
-    if(atual >= perguntas.lenght){
+    if(atual >= perguntas.lenght) {
         mostraResultado();
         return;
     }
@@ -64,17 +99,6 @@ function mostraPergunta() {
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.textContent = "";
-    mostraAlternativas();
-}
-
-
-let atual = 0;
-let perguntaAtual;
-
-
-function mostraPergunta() {
-    perguntaAtual = perguntas[atual];
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
     mostraAlternativas();
 }
 
@@ -89,15 +113,18 @@ function mostraAlternativas() {
 }
 
 
-function respostaSelecionada(opcaoSelecionada){
-    const afirmacoes = opcaoSelecionada.afirmacoes;
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = opcaoSelecionada.afirmação;
     historiaFinal += afirmacoes + "";
     atual++;
     mostraPergunta();
 }
 
-function mostraResultado(){
+
+function mostraResultado() {
     caixaPerguntas.textContent = "";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
 }
 
 mostraPergunta();
